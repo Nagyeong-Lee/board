@@ -1,0 +1,73 @@
+package main;
+
+import java.util.List;
+import java.util.Scanner;
+
+import dao.DAO;
+import dto.DTO;
+
+public class Main {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		//게시판 crud
+		//글작성,출력,수정,삭제,검색
+		//db생성 : 글번호,작성자,글제목,글내용,작성일시
+		//db생성,dao,dto
+
+
+		DAO dao = DAO.getInstance();
+		
+		Scanner sc = new Scanner(System.in);
+		while(true) {
+			System.out.println("<<게시판 프로그램>>");
+			System.out.println("1.글 작성하기");
+			System.out.println("2.글 출력하기");
+			System.out.println("3.글 수정하기");
+			System.out.println("4.글 삭제하기");
+			System.out.println("5.글 검색하기");
+			System.out.println("6.프로그램 종료하기");
+			int menu=Integer.parseInt(sc.nextLine());
+			
+			if(menu==1) {
+				System.out.print("작성자 : ");
+				String writer=sc.nextLine();
+
+				System.out.print("제목 : ");
+				String title=sc.nextLine();
+
+				System.out.print("글 내용 : ");
+				String text=sc.nextLine();
+
+				try {
+					int result=dao.insert(new DTO(0,writer,title,text,null));
+					if(result>0) {
+						System.out.println("글 작성 완료");
+					}
+				}catch(Exception e) {
+					e.printStackTrace();
+				}
+
+			}else if(menu==2) {
+				try {
+				List<DAO>arr=dao.selectAll();
+				}catch(Exception e) {
+					e.printStackTrace();
+				}
+				
+
+			}else if(menu==3) {
+
+			}else if(menu==4) {
+
+			}else if(menu==5) {
+
+			}else if(menu==6) {
+				System.out.println("프로그램을 종료합니다");
+				System.exit(0);
+			}
+		}
+	}	
+
+}
