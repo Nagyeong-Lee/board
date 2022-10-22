@@ -1,0 +1,34 @@
+package dao;
+
+import java.sql.Connection;
+import java.sql.SQLException;
+
+import org.apache.commons.dbcp2.BasicDataSource;
+
+public class DAO {
+
+	public DAO instance = null;
+	public DAO getInstance() {
+		if(instance==null) {
+			return new DAO();
+		}else {
+			reuturn instance;
+		}
+	}
+	
+	private BasicDataSource bds = new BasicDataSource();
+
+	private DAO() {
+		this.bds.setUrl("oracle:jdbc:thin:@localhost:1521:xe");
+		this.bds.setUsername("bulletinBoard");
+		this.bds.setPassword("bulletinBoard");
+		this.bds.setInitialSize(30);
+	}	
+	
+	private Connection getConnection() throws SQLException {
+		return this.bds.getConnection();
+	}
+
+
+
+}

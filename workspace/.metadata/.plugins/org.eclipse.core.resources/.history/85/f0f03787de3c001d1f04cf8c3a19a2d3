@@ -1,0 +1,17 @@
+package dao;
+
+import org.apache.commons.dbcp2.BasicDataSource;
+
+public class DAO {
+	
+	
+public DAO() {
+	this.bds.setUrl("oracle:jdbc:thin:@localhost:1521:xe");
+	this.bds.setUsername("bulletinBoard");
+	this.bds.setPassword("bulletinBoard");
+	this.bds.setInitialSize(30);
+}	
+private BasicDataSource bds = new BasicDataSource();
+
+		
+}
